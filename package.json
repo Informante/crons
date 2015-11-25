@@ -1,12 +1,14 @@
 {
   "name": "cronjobs",
   "version": "1.0.0",
-  "description": "Cronjob backup for mongodb database",
-  "main": "herokuMongoBackup.js",
+  "description": "Cron Job, backup for mongodb database",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jarbit Lira <jarbitlira@gmail.com>",
+  "author": {
+    "username": "jarbitlira",
+    "email": "jarbitlira@gmail.com"
+  },
   "license": "ISC",
   "dependencies": {
     "dotenv": "^1.2.0",

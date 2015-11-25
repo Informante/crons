@@ -27,15 +27,15 @@ var backUpName = databaseName + '-backup-' + moment().format('DD-MM-YYYY') + '.t
 //generate backup and send to email
 backup({
     uri: uri,
-    root: __dirname,
+    root: __dirname + '/bk',
     tar: backUpName,
     parser: 'json',
     logger: 'backup.log',
-    callback: function (error, response) {
+    callback: function () {
         var file = fs.readFileSync(path.join(__dirname, backUpName));
         mailgun.messages().send({
-            from: 'bk@informante.com',
-            to: 'jarbitlira@gmail.com',
+            from:  process.env.MAILGUN_FROM,
+            to:  process.env.MAILGUN_TO,
             subject: 'Backup from Informante - ' + backUpName,
             text: 'Backup File ' + backUpName.toString(),
             attachment: new mailgun.Attachment({data: file, filename: backUpName})

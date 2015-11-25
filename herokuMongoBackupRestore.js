@@ -18,7 +18,7 @@ var backUpName = process.argv[2]; //backup tar file
 
 restore({
     uri: uri,
-    root: __dirname,
+    root: __dirname + '/bk',
     parser: 'json',
     tar: backUpName,
     logger: __dirname + '/log.log'
