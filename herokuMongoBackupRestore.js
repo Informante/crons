@@ -1,7 +1,10 @@
 /**
  * Created by jarbitlira on 11/25/15.
  */
-require('dotenv').load();
+var dotenv = require('dotenv');
+dotenv.config({silent: true});
+dotenv.load();
+
 var restore = require('mongodb-restore');
 
 var dbuser = process.env.INFORMANTE_DB_USERNAME || '';

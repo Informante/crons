@@ -1,7 +1,10 @@
 /**
  * Created by jarbitlira on 11/25/15.
  */
-require('dotenv').load();
+var dotenv = require('dotenv');
+dotenv.config({silent: true});
+dotenv.load();
+
 var backup = require('mongodb-backup');
 var moment = require('moment');
 
@@ -32,10 +35,10 @@ backup({
     parser: 'json',
     logger: 'backup.log',
     callback: function () {
-        var file = fs.readFileSync(path.join(__dirname, backUpName));
+        var file = fs.readFileSync(path.join(__dirname, '/bk/' + backUpName));
         mailgun.messages().send({
-            from:  process.env.MAILGUN_FROM,
-            to:  process.env.MAILGUN_TO,
+            from: process.env.MAILGUN_FROM,
+            to: process.env.MAILGUN_TO,
             subject: 'Backup from Informante - ' + backUpName,
             text: 'Backup File ' + backUpName.toString(),
             attachment: new mailgun.Attachment({data: file, filename: backUpName})
